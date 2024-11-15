@@ -26,16 +26,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware([isAuthenticated::class])->group(function () {
     route::get('/panel', [AuthController::class, 'panel'])->name('panel');
 
+    
     //rutas para usuario
     route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
-    
+        
     route::get('/usuario/creado', [UserController::class, 'create'])->name('usuario.create');
     route::post('/usuario/creado', [UserController::class, 'store'])->name('usuario.store');
-    
+
     route::get('/usuario/update/{id}', [UserController::class, 'edit'])->name('usuario.update');
     route::post('/usuario/update/{id}', [UserController::class, 'update'])->name('usuario.update.data');
-    
+
     route::get('/usuario/delete/{id}', [UserController::class, 'destroy'])->name('usuario.destroy');
+
     
     //rutas para producto
     route::get('/producto', [ProductoController::class, 'index'])->name('producto.index');
@@ -61,5 +63,4 @@ Route::middleware([isAuthenticated::class])->group(function () {
     route::get('/factura/delete/{id}', [FacturaController::class, 'destroy'])->name('factura.destroy');
     
 });
-
 
