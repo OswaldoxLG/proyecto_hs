@@ -10,6 +10,7 @@
 </head>
 <body>
     <ul>
+            <li><a class="nav-link active" href="{{ route('home')}}">Pagina principal</a></li>
             <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
             <li><a href="{{ route('register') }}">Registrarse</a></li>
             @if(auth()->check())

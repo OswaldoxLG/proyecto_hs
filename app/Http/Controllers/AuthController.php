@@ -62,4 +62,7 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Has cerrado sesión.');
     }
 
+    public function panel(){
+        return view('auth/menu');
+    }
 }
