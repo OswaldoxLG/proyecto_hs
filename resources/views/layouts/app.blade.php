@@ -9,8 +9,7 @@
     @yield('styles')
 </head>
 <body>
-    {{-- <nav>
-        <ul>
+    <ul>
             <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
             <li><a href="{{ route('register') }}">Registrarse</a></li>
             @if(auth()->check())
@@ -21,8 +20,7 @@
                     </form>
                 </li>
             @endif
-        </ul>
-    </nav> --}}
+    </ul>
     <div class="container">
         @yield('content')
     </div>

@@ -3,12 +3,25 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+
+Route::get('/registro', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/registro', [AuthController::class, 'register'])->name('registro.submit');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//rutas para usuario
 route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
 
 route::get('/usuario/creado', [UserController::class, 'create'])->name('usuario.create');
@@ -19,7 +32,7 @@ route::post('/usuario/update/{id}', [UserController::class, 'update'])->name('us
 
 route::get('/usuario/delete/{id}', [UserController::class, 'destroy'])->name('usuario.destroy');
 
-//producto
+//rutas para producto
 route::get('/producto', [ProductoController::class, 'index'])->name('producto.index');
 
 route::get('/producto/creado', [ProductoController::class, 'create'])->name('producto.create');
@@ -30,7 +43,7 @@ route::post('/producto/update/{id}', [ProductoController::class, 'update'])->nam
 
 route::get('/producto/delete/{id}', [ProductoController::class, 'destroy'])->name('producto.destroy');
 
-//facturas
+//rutas para facturas
 
 route::get('/factura', [FacturaController::class, 'index'])->name('factura.index');
 
