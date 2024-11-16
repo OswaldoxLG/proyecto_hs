@@ -16,10 +16,13 @@ class isAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $auth = Auth::user();
-        if(!Auth::check()){
-            return redirect()->route('login');
+        if (Auth::check()) {
+            if (Auth::user()->rol === 'administrador') {
+                return $next($request); 
+            }
+            return redirect()->route('home'); 
         }
-        return $next($request);
+
+        return redirect()->route('login');
     }
 }
